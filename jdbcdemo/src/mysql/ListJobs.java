@@ -10,11 +10,13 @@ public class ListJobs {
 		Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hr","root","mysql");
         
 		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery("select * from jobs");
+		ResultSet rs = st.executeQuery("select * from jobs order by minsal");
+		
 		while(rs.next()) {
-			System.out.println(rs.getString("title"));
+			System.out.printf("%-20s %6d\n", rs.getString("title"), rs.getInt("minsal"));
 		}
 
+		st.close();
 		con.close();
 	}
 
