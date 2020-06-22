@@ -11,7 +11,6 @@ public class CachedRowsetDemo {
 		rowSet.setUrl("jdbc:mysql://localhost:3306/hr");
 		rowSet.setUsername("root");
 		rowSet.setPassword("mysql");
-
 		rowSet.setCommand("select * from employees");
 		rowSet.execute();
 
