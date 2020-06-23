@@ -1,0 +1,15 @@
+@charset "ISO-8859-1";
+
+body {
+  background-color: wheat;
+  font-family: verdana;
+  font-size: 20px;
+}
+
+h1 {
+  color: maroon;
+  text-align: center;
+  font-family:calibri;
+  font-size:30pt;
+}
+
