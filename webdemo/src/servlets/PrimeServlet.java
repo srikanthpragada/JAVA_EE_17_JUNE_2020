@@ -11,24 +11,32 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/prime")
 public class PrimeServlet extends HttpServlet {
+
+	// Handles POST request 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
+
+	// Handles GET request
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		  String input = request.getParameter("number");
-		  int num = Integer.parseInt(input);
-		  boolean prime = true; 
-		  
-		  for(int i = 2; i <= num/2 ; i ++)
-			  if ( num % i == 0 ) {
-				  prime = false;
-				  break;
-			  }
 
-		  PrintWriter pw = response.getWriter();
-		  if(prime)
-			  pw.println("<h1>Prime Number</h1>");
-		  else
-			  pw.println("<h1>Not a Prime Number</h1>");
+		String input = request.getParameter("number");
+		int num = Integer.parseInt(input);
+		boolean prime = true;
+
+		for (int i = 2; i <= num / 2; i++)
+			if (num % i == 0) {
+				prime = false;
+				break;
+			}
+
+		PrintWriter pw = response.getWriter();
+		if (prime)
+			pw.println("<h1>Prime Number</h1>");
+		else
+			pw.println("<h1>Not a Prime Number</h1>");
 	}
 
 }
