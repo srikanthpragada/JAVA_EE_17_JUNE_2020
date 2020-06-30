@@ -13,7 +13,8 @@
 	<%
 		primeBean.detect();
 	%>
-	<h2><jsp:getProperty property="message" name="primeBean" /></h2>
+	
+	<h2>${primeBean.message}</h2>
 
 
 
