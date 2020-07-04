@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+
+body {
+	font-size:12pt;
+	font-family : verdana;
+}
+
+.banner {
+	background-color:green;
+	color:white;
+	font-size:20pt;
+}
+
+.menu  {
+	background-color: lightgray;
+	font-weight :bold;
+}
