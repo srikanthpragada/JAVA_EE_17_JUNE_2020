@@ -12,9 +12,9 @@
 </head>
 <body>
 	<h1>Update Employee Salary</h1>
-	<form action="update_salary.jsp">
-		Employee Id <br /> <input type="number" required name="empid"
-			value="${param.empid}" />
+	<form>
+		Employee Id <br /> <input type="number" required name="id"
+			value="${param.id}" />
 		<p></p>
 		New Salary <br /> <input type="number" required name="salary"
 			value="${param.salary}" />
@@ -22,32 +22,31 @@
 		<input type="submit" value="Update" />
 	</form>
 
-	<c:if test="${!empty param.empid}">
-	    <!-- catch exception into ex variable -->
+	<c:if test="${!empty param.id}">
+		<!-- catch exception into ex variable -->
 		<c:catch var="ex">
-			<!--  Connect to Oracle  -->
-			<sql:setDataSource var="oracle"
-				driver="oracle.jdbc.driver.OracleDriver"
-				url="jdbc:oracle:thin:@localhost:1521:XE" user="hr" password="hr" />
+			<!--  Connect to MySQL  -->
+			<sql:setDataSource var="mysql" driver="com.mysql.cj.jdbc.Driver"
+				url="jdbc:mysql://localhost:3306/hr" user="root" password="mysql" />
 
-			<sql:update dataSource="${oracle}" var="uc">
- 			update employees set salary = ? where employee_id = ?
+			<sql:update dataSource="${mysql}" var="uc">
+ 			update employees set salary = ? where id = ?
             <sql:param value="${param.salary}" />
-				<sql:param value="${param.empid}" />
+				<sql:param value="${param.id}" />
 			</sql:update>
-
-			<c:if test="${uc == 1}">
-				<h3>Updated Employee Successfully!</h3>
-			</c:if>
-
-			<c:if test="${uc == 0}">
-				<h3>Employee Id Not Found!</h3>
-			</c:if>
+			<c:choose>
+				<c:when test="${uc == 1}">
+					<h3>Updated Employee Successfully!</h3>
+				</c:when>
+				<c:otherwise>
+					<h3>Employee Id Not Found!</h3>
+				</c:otherwise>
+			</c:choose>
 		</c:catch>
-		
-        <!--  if variable ex is not empty then it has an exception -->		
+
+		<!--  if variable ex is not empty then it has an exception -->
 		<c:if test="${!empty ex}">
-		   <h3>Sorry! Error during updation : ${ex.message}</h3>
+			<h3>Sorry! Error during updation : ${ex.message}</h3>
 		</c:if>
 	</c:if>
 
