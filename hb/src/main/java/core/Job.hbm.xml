@@ -12,7 +12,7 @@
             <column name="TITLE" />
         </property>
         <property name="minSal" type="int">
-            <column name="minsal" />
+            <column name="MINSAL" />
         </property>
         
     </class>
