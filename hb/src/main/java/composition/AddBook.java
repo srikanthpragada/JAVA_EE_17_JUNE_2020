@@ -1,11 +1,11 @@
-package core;
+package composition;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class AddJob { 
+public class AddBook { 
 
 	public static void main(String[] args) throws Exception {
 		Configuration c = new Configuration();
@@ -14,18 +14,14 @@ public class AddJob {
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
 		
-		Job job = new Job();  // Transient 
-		job.setId("HBPRO");
-		job.setTitle("Hibernate Programmer");
-		job.setMinSal(500000);
+		Book b = new Book();
+		b.setTitle("Hibernate");
+		b.setPrice(500);
 
-		
 		Transaction trans = s.beginTransaction();
-		s.save(job);  // Insert into JOBS table   -  Transient to Persistent
-		System.out.println("Inserted!");
+		s.save(b);  
 		trans.commit();
-		System.out.println("Committed!");
-		s.close();    // Detached 
+		s.close();   
 		sf.close();
 	}
 }

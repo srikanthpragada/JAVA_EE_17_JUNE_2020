@@ -1,12 +1,12 @@
 package core;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-
-public class DeleteJob {
+public class ListEmployees {
 
 	public static void main(String[] args) throws Exception {
 		Configuration c = new Configuration();
@@ -14,17 +14,12 @@ public class DeleteJob {
 
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
-		
-		Job job = s.get(Job.class, "JPRO");  // Persistent 
-		if (job == null)
-			System.out.println("Sorry! Job id not found!");
-		else {
-			Transaction trans = s.beginTransaction();
-            s.remove(job); // Removed 
-			trans.commit();
-			System.out.println("Deleted!");
-		}
 
+		List<Employee> employees = s.createQuery("from Employee").list();
+
+		for (Employee e : employees) {
+			System.out.printf("%-30s  - %d\n", e.getFullname(), e.getSalary());
+		}
 		s.close();
 		sf.close();
 	}

@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
-public class AddJob { 
+public class AddEmployee { 
 
 	public static void main(String[] args) throws Exception {
 		Configuration c = new Configuration();
@@ -14,15 +14,16 @@ public class AddJob {
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
 		
-		Job job = new Job();  // Transient 
-		job.setId("HBPRO");
-		job.setTitle("Hibernate Programmer");
-		job.setMinSal(500000);
+		Employee e = new Employee();
+		e.setFullname("Jack Willson");
+		e.setJob("jpro");
+		e.setSalary(600000);
 
+		System.out.println("Inserting with id : " + e.getId());
 		
 		Transaction trans = s.beginTransaction();
-		s.save(job);  // Insert into JOBS table   -  Transient to Persistent
-		System.out.println("Inserted!");
+		s.save(e);  // Insert into JOBS table   -  Transient to Persistent
+		System.out.println("Inserted! with id : " + e.getId());
 		trans.commit();
 		System.out.println("Committed!");
 		s.close();    // Detached 

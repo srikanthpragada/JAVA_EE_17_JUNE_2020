@@ -8,9 +8,11 @@
         <property name="hibernate.connection.password">mysql</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hr</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
         <property name="hibernate.show_sql">true</property>
-        <property name="hibernate.hbm2ddl.auto">none</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <mapping  resource="core/Job.hbm.xml"/>  
+        <mapping  resource="core/Employee.hbm.xml"/>
+        <mapping  resource="composition/Book.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
