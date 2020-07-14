@@ -1,9 +1,8 @@
-package composition;
+package idgen;
 
 public class Book {
 	private int id;
 	private String title;
-	private int price;
 
 	public int getId() {
 		return id;
@@ -19,14 +18,6 @@ public class Book {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
 	}
 
 }
