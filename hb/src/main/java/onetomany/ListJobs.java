@@ -3,17 +3,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-public class DisplayDepartment {
+public class ListJobs {
 	public static void main(String[] args) throws Exception {
 		Configuration c = new Configuration();
 		c.configure("onetomany/hibernate.cfg.xml");
 
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
-		Department d =  s.get(Department.class, 60);
-		System.out.println(d.getName());
+		Job job =  s.get(Job.class,"jpro");
+		System.out.println(job.getTitle());
 		
-		for (Emp e : d.getEmployees())
+		for (Employee e : job.getEmployees())
 			System.out.println(e.getName());
 		
 		s.close();

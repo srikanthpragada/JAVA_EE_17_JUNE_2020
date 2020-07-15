@@ -16,7 +16,7 @@ public class ListJobs {
 		for (Job j : jobs)
 		{
 			System.out.println(j.getTitle());
-			for(Emp e : j.getEmployees())
+			for(Employee e : j.getEmployees())
 				System.out.println("*****" + e.getName());
 		}
 		

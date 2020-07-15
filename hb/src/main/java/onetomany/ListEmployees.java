@@ -12,9 +12,9 @@ public class ListEmployees {
 
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
-		List<Emp> employees = s.createQuery("from Emp").getResultList();
-		for(Emp e : employees) {
-		    System.out.printf("%-20s %s\n",e.getName(),e.getDepartment().getName());
+		List<Employee> employees = s.createQuery("from Employee").getResultList();
+		for(Employee e : employees) {
+		    System.out.printf("%-20s %s\n",e.getName(),e.getJob().getTitle());
 		}
 		s.close();
 		sf.close();

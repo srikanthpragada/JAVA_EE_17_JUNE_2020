@@ -12,10 +12,10 @@ public class ListEmployees {
 		Session s = sf.openSession();
 	 
 		Employee e =  s.load(Employee.class, 1);
-		System.out.println(e.getClass());
+		// System.out.println(e.getClass());
 		System.out.println(e.getName());
 		Membership m = e.getMembership();
-		//System.out.println(m.getType());
+		System.out.println(m.getType());
 		s.close();
 		sf.close();
 	}

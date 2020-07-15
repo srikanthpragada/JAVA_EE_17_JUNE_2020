@@ -10,7 +10,7 @@ public class ListEmployees {
 
 		SessionFactory sf = c.buildSessionFactory();
 		Session s = sf.openSession();
-		Emp e =  s.get(Emp.class, 101);
+		Employee e =  s.get(Employee.class, 1);
 		System.out.println(e.getName());
 		for (Job j : e.getJobs())
 			System.out.println(j.getTitle());

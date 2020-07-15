@@ -1,16 +1,28 @@
 package jpa;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Entity(name="JPAJob")
+@Entity
 @Table(name = "jobs")
 public class Job {
-
 	private String id, title;
-	private int minSal, maxSal;
+	private int minSal;
+	private Set<Employee> employees;
+
+	@OneToMany(mappedBy = "job")
+	public Set<Employee> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
+	}
 
 	@Id
 	@Column(name = "id")

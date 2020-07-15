@@ -4,15 +4,16 @@
 <hibernate-mapping>
 	<class name="onetoone.Employee" table="hb_employees">
 		<id name="id">
-			<generator class="increment" />
+			<generator class="native" />
 		</id>
 		<property name="name" length="20" />
+		<!--  relationship is stored here -->
 		<many-to-one cascade="save-update" class="onetoone.Membership"
-			name="membership" unique="true"  fetch="join" />
+			name="membership" unique="true"  />
 	</class>
 	<class name="onetoone.Membership" table="hb_memberships">
 		<id name="id">
-			<generator class="increment" />
+			<generator class="native" />
 		</id>
 		<property name="type" length="20"/>
 		<one-to-one name="employee" property-ref="membership" />

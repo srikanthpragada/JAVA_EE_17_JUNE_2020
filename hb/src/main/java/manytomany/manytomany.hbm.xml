@@ -2,27 +2,27 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="manytomany.Emp" table="Employees">
+	<class name="manytomany.Employee" table="Employees">
 		<id name="id">
-			<column name="employee_id" />
-			<generator class="increment" />
+			<column name="id" />
+			<generator class="native" />
 		</id>
-		<property name="name" length="20" column="first_name" />
+		<property name="name" length="20" column="fullname" />
 		<set inverse="true" name="jobs" table="job_history">
-			<key column="employee_id" />
-			<many-to-many class="manytomany.Job" column="job_id" />
+			<key column="empid" />
+			<many-to-many class="manytomany.Job" column="jobid" />
 		</set>
 	</class>
 	<class name="manytomany.Job" table="Jobs">
 		<id name="id">
-			<column name="job_id" />
+			<column name="id" />
 			<generator class="assigned" />
 		</id>
-		<property name="title" column="job_title" length="20" />
+		<property name="title" column="title" length="20" />
 		<set cascade="all" name="employees" table="job_history">
-			<key column="job_id" />
-			<many-to-many class="manytomany.Emp"
-				column="employee_id" />
+			<key column="jobid" />
+			<many-to-many class="manytomany.Employee"
+				column="empid" />
 		</set>
 	</class>
 

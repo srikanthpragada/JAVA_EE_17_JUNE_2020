@@ -37,3 +37,16 @@ insert into employees(fullname,salary,job) values('Bob Tabour',900000,'ppro');
 
 
 
+create table job_history(
+ empid int not null references employees(id),
+ jobid varchar(5) not null references jobs(id),
+ startdate date,
+ enddate date
+) 
+
+insert into job_history values(1,'jpro','2015-10-02','2017-01-03')
+insert into job_history values(1,'ppro','2017-02-01','2019-11-15')
+insert into job_history values(2,'ppro','2016-01-02','2019-01-03')
+insert into job_history values(3,'odba','2018-05-01','2019-12-31')
+
+

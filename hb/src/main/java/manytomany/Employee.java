@@ -1,16 +1,19 @@
-package onetomany;
+package manytomany;
 
-public class Emp {
+import java.util.HashSet;
+import java.util.Set;
+
+public class Employee {
 	private int id;
 	private String name;
-	private Department department;
+    private Set<Job> jobs = new HashSet<>();
 
-	public Department getDepartment() {
-		return department;
+	public Set<Job> getJobs() {
+		return jobs;
 	}
 
-	public void setDepartment(Department department) {
-		this.department = department;
+	public void setJobs(Set<Job> jobs) {
+		this.jobs = jobs;
 	}
 
 	public int getId() {

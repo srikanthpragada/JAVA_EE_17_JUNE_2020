@@ -2,17 +2,16 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="onetomany.Employee" table="Employees">
+	<class name="query.Employee" table="Employees">
 		<id name="id">
 			<column name="id" />
 			<generator class="increment" />
 		</id>
 		<property name="name" length="20" column="fullname" />
 		<property name="salary" column="salary" />
-		<many-to-one cascade="all" class="onetomany.Job"
-			name="job"  column="job"/>
+		<many-to-one class="query.Job" name="job" column="job" />
 	</class>
-	<class name="onetomany.Job" table="jobs">
+	<class name="query.Job" table="Jobs">
 		<id name="id">
 			<column name="id" />
 			<generator class="assigned" />
@@ -20,8 +19,12 @@
 		<property name="title" column="title" length="20" />
 		<set inverse="true" name="employees">
 			<key column="job" />
-			<one-to-many class="onetomany.Employee" />
+			<one-to-many class="query.Employee" />
 		</set>
 	</class>
+	
+	<query name="costlyEmployees">
+           <![CDATA[ from Employee where salary > :salary ]]>
+    </query>
 
 </hibernate-mapping>

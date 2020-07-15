@@ -5,9 +5,6 @@
     <persistence-unit name="mysql" transaction-type="RESOURCE_LOCAL">
         <!-- Persistence provider -->
          <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-         <!-- Entity classes -->
-         <class>jpa.Job</class>
-         <exclude-unlisted-classes>true</exclude-unlisted-classes>
          <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"    value="jdbc:mysql://localhost:3306/hr" />
