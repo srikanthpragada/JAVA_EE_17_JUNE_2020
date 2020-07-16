@@ -19,12 +19,17 @@ public class AddPersons {
 		Player p1 = new Player();
 		p1.setName("Dhoni");
 		p1.setGame("Cricket");
+		
+		Player p2 = new Player();
+		p2.setName("Ronaldo");
+		p2.setGame("Football");
 
 		Student s1 = new Student();
 		s1.setName("Bill Gates");
 		s1.setCourse("AI");
 
 		s.save(p1);
+		s.save(p2);
 		s.save(s1);
 
 		s.getTransaction().commit();

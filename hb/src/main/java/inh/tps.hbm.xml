@@ -4,7 +4,7 @@
 <hibernate-mapping>
     <class name="inh.Person" table="hb_persons">
         <id name="id" type="int">
-            <generator class="increment" />
+            <generator class="native" />
         </id>
         <property name="name"  length="20" type="java.lang.String"/>
         <joined-subclass name="inh.Student" table="hb_students">
