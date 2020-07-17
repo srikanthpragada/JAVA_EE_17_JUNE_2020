@@ -12,9 +12,9 @@ public class NamedQueries {
       Session session = c.buildSessionFactory().openSession();
 
       List<Employee> employees = session.getNamedQuery("costlyEmployees")
-    		                            .setParameter("salary",15000)
+    		                            .setParameter("salary",750000)
     		                            .list();
-      for( Employee e : employees) {
+      for(Employee e : employees) {
             System.out.printf("%-20s %d\n",e.getName(),e.getSalary());
       }
     }

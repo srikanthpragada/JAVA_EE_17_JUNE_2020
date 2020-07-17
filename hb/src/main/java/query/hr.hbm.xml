@@ -5,7 +5,7 @@
 	<class name="query.Employee" table="Employees">
 		<id name="id">
 			<column name="id" />
-			<generator class="increment" />
+			<generator class="native" />
 		</id>
 		<property name="name" length="20" column="fullname" />
 		<property name="salary" column="salary" />

@@ -1,8 +1,5 @@
 package query;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Employee {
 	private int id;
 	private String name;
