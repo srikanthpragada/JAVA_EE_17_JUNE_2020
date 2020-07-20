@@ -35,6 +35,7 @@ public class Employee {
 		this.name = name;
 	}
 
+	@Column(name="salary")
 	public int getSalary() {
 		return salary;
 	}

@@ -8,10 +8,11 @@ import javax.persistence.Persistence;
 public class ListJobs {
 
 	public static void main(String[] args) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("mysql");
+		EntityManagerFactory entityManagerFactory =
+				Persistence.createEntityManagerFactory("mysql");
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-		List<Job> jobs = entityManager.createQuery("from Job").getResultList();
+		List<Job> jobs = entityManager.createQuery("from Job").getResultList();  // JPQL
 
 		for (Job job : jobs)
 			System.out.println(job.getTitle());
