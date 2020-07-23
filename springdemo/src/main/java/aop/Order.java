@@ -13,5 +13,6 @@ public class Order {
 	  }
 	  public void cancelOrder() {
 		  System.out.println("Cancelling order!");
+		  // throw new RuntimeException("Error in Cancelling Order!");
 	  }
 }
