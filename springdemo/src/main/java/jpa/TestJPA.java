@@ -18,11 +18,11 @@ public class TestJPA implements CommandLineRunner {
 
 	public void list() {
 		for (Job j : repo.findAll())
-			System.out.println(j.getTitle());
+			System.out.printf("%s  %s\n", j.getId(), j.getTitle());
 	}
 
 	public void listByTitle(String title) {
-		for (Job job : repo.getJobsByTitle(title))
+		for (Job job : repo.getByTitleContaining(title))
 			System.out.println(job.getTitle());
 	}
 
@@ -32,7 +32,6 @@ public class TestJPA implements CommandLineRunner {
 	}
 
 	public void add(String id, String title, int minsal) {
-		System.out.println(repo.getClass().getName());
 		Job job = new Job();
 		job.setId(id);
 		job.setTitle(title);
@@ -52,11 +51,14 @@ public class TestJPA implements CommandLineRunner {
 	}
 
 	public void run(String... args) {
-		list();
-		// add("azad,"Azure Admin",1000000);
+		// System.out.println(repo.getClass());
+		// list();
+		// add("awsad","Aws Admin",1000000);
 		// updateJobTitle("jpro","Java EE Programmer");
-		System.out.println("Avg. Min Salary : " + repo.getAvgMinSalary());
+		// System.out.println("Avg. Min Salary : " + repo.getAvgMinSalary());
 		// listCostlyJobs(600000);
+	    listByTitle("Admin");
+		// System.out.println( repo.countByMinSal(500000));
 
 	}
 }

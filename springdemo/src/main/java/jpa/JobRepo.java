@@ -16,5 +16,8 @@ public interface JobRepo extends CrudRepository<Job,String> {
 	int  getAvgMinSalary();
 	
 	// Query Derivation 
-	List<Job> getJobsByTitle (String title);
+	List<Job> getByTitleContaining(String title);
+	
+	// Query Derivation 
+    int countByMinSal(int minSal);
 }
