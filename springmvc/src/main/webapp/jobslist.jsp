@@ -13,7 +13,7 @@
 	<h2>Jobs</h2>
 	<ul>
 		<c:forEach var="job" items="${jobs}">
-			<li>${job.id}, ${job.title} &nbsp; <a  href="/employees?id=${job.id}">Employees	</a></li>
+			<li>${job.id}, ${job.title} &nbsp; <a href="/employees?id=${job.id}">Employees</a></li>
 		</c:forEach>
 	</ul>
 </body>

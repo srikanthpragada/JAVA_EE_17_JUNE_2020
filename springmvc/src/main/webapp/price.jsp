@@ -15,9 +15,11 @@
 	<sf:form method="post" modelAttribute="product">
 		Base Price <br/>
 		<sf:input path="price" required="true" type="number" title="Price of product"  />
+		<sf:errors path="price"/>
 		<p/>
 		Discount Rate<br/> 
 		<sf:input path="discount" type="number" required="true" title="Discount Percentage" />
+		<sf:errors path="discount"/>
 		<p></p>
 		<input type="submit" Value="Calculate" />
 		<p></p>
@@ -25,5 +27,7 @@
 		    <h3> Net price : ${product.netPrice}</h3>
 		</c:if>    
 	</sf:form>
+	<p></p>
+	<h3>${message}</h3>
 </body>
 </html>

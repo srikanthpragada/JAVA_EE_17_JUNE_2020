@@ -12,7 +12,7 @@ public class JobController {
 	private JobRepo jobRepo;
 	
 	@RequestMapping("/jobs")
-	public String job(ModelMap model) {
+	public String getAllJobs(ModelMap model) {
 		Iterable<Job> jobs = jobRepo.findAll();
 		model.addAttribute("jobs", jobs);
 		return "jobslist";
