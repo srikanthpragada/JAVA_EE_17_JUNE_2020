@@ -10,8 +10,14 @@
 <body>
 	<h2>Add Job</h2>
 	<sf:form method="post" modelAttribute="job">
-		Id : <sf:input path="id" type="text" required="true" />
-		Title : <sf:input path="title" maxlength="20" required="true"  autocomplete="off" />
+		Job Id <br/>
+		<sf:input path="id" type="text" required="true" />
+		<p></p>
+		Job Title <br/>
+		<sf:input path="title" maxlength="20" required="true"  autocomplete="off" />
+		<p></p>
+		Min. Salary <br/>
+		<sf:input path="minSal" type="number" required="true"  autocomplete="off" />
 		<p></p>
 		<input type="submit" Value="Add Job" />
 	</sf:form>
