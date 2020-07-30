@@ -1,5 +1,6 @@
 package web;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.servlet.ServletContext;
@@ -26,22 +27,21 @@ public class StateController {
 		
 		// Create session/browser based cookie 
 		Cookie c = new Cookie("lastaccess", LocalDateTime.now().toString());
-		// c.setMaxAge(24 * 60 * 60);
+		c.setMaxAge(24 * 60 * 60);
 		response.addCookie(c);
 		
 		return st;
 	}
 	
 	@RequestMapping("/session")
-	@ResponseBody 
-	public String useSession(HttpSession session) {
+    public String useSession(HttpSession session) {
 		// Session attribute
-		session.setAttribute("title", "Demo Application");
+		session.setAttribute("now", LocalDate.now().toString());
 		
 		ServletContext ctx = session.getServletContext();
-		session.setAttribute("name", this.getClass().getName());
+		ctx.setAttribute("name", "Spring MVC Demo");
 		
-		return "<h2>Session Attribute Created!</h2>";
+		return  "showSession"; 
 	}
 	
 	@RequestMapping("/lastaccess")
