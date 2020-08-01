@@ -27,41 +27,39 @@ public class RestJobController {
 
 	@GetMapping("/{id}") // For Http GET request with id
 	public Job getOneDept(@PathVariable("id") String id) {
-		Optional<Job> dept = jobRepo.findById(id);
-		if (dept.isPresent())
-			return dept.get();
+		Optional<Job> job = jobRepo.findById(id);
+		if (job.isPresent())
+			return job.get();
 		else
-			throw new ResponseStatusException
-			     (HttpStatus.NOT_FOUND,  "Department Id Not Found");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Id Not Found"); // 404
 	}
 
 	@PostMapping() // For Http POST request
-	public Job addDept(Job job) {
+	public Job addJob(Job job) {
 		try {
 			// check whether job id is already present
-			// if so, throw exception 
+			// if so, throw exception
 			jobRepo.save(job);
 			return job;
 		} catch (Exception ex) {
 			System.out.println(ex);
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Data");
-			 
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Data"); // 400
+
 		}
 	}
 
 	@DeleteMapping("/{id}") // For Http DELETE request
 	public void deleteJob(@PathVariable("id") String id) {
-		Optional<Job> dept = jobRepo.findById(id);
-		if (dept.isPresent()) {
+		Optional<Job> job = jobRepo.findById(id);
+		if (job.isPresent()) {
 			try {
-				jobRepo.delete(dept.get());
+				jobRepo.delete(job.get());
 			} catch (Exception ex) {
 				System.out.println(ex);
-				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR); // 500
 			}
 		} else {
-			throw new ResponseStatusException
-			     (HttpStatus.NOT_FOUND, "Job Id Not Found!");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Id Not Found!");
 		}
 	}
 
@@ -72,15 +70,14 @@ public class RestJobController {
 			try {
 				Job dbJob = job.get();
 				dbJob.setTitle(newJob.getTitle());
-		        jobRepo.save(dbJob);  	
-		        return dbJob;
+				jobRepo.save(dbJob); // Update
+				return dbJob;
 			} catch (Exception ex) {
 				System.out.println("Error  " + ex);
-				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+				throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR); // 500
 			}
 		} else {
-			throw new ResponseStatusException
-			     (HttpStatus.NOT_FOUND, "Job Id Not Found!");
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Job Id Not Found!");
 		}
 	}
 
